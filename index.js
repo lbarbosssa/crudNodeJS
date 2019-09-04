@@ -43,6 +43,12 @@ app.get('/deletar/:id', (req, res) => {
     })
 })
 
+app.get('/api/listAll', (req, res) => {
+    Post.findAll({order: [['id', 'DESC']]}).then((posts) => {
+        res.json(posts)
+    }).catch((e) => {console.log(e)})
+})
+
 app.listen(8081,() => {
     console.log('servidor rodando: localhost:8081')
 })
